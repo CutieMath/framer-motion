@@ -24,13 +24,7 @@ function ListForm(props) {
   };
 
   return (
-    <motion.form
-      className="list-form"
-      onSubmit={handleSubmit}
-      animate={{ opacity: 1 }}
-      initial={{ opacity: 0 }}
-      transition={{ duration: 1 }}
-    >
+    <form className="list-form" onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder="Add an item"
@@ -41,7 +35,7 @@ function ListForm(props) {
         ref={inputRef}
       />
       <button className="list-button">Add</button>
-    </motion.form>
+    </form>
   );
 }
 

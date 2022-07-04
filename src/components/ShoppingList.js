@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import List from "./List";
 import ListForm from "./ListForm";
-import { motion } from "framer-motion";
 
 function ShoppingList() {
   const [items, setItems] = useState([]);
@@ -31,13 +30,7 @@ function ShoppingList() {
 
   return (
     <div>
-      <motion.h1
-        animate={{ opacity: 1 }}
-        initial={{ opacity: 0 }}
-        transition={{ duration: 1 }}
-      >
-        Shopping List
-      </motion.h1>
+      <h1>Shopping List</h1>
       <ListForm onSubmit={addListItem} />
       <List items={items} removeItem={removeItem} reOrderList={setItems} />
     </div>

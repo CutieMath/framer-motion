@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { RiCloseCircleLine } from "react-icons/ri";
-import { motion, AnimatePresence, Reorder } from "framer-motion";
 
 const itemVariants = {
   hidden: { opacity: 0 },
@@ -10,42 +9,32 @@ const itemVariants = {
   }),
 };
 
-function List({ items, removeItem, reOrderList }) {
+function List({ items, removeItem }) {
   return (
     <>
-      <Reorder.Group
-        axis="y"
+      <ul
         values={items}
-        onReorder={reOrderList}
         className="ul-portal"
         style={{ display: "flex", flexDirection: "column", flex: 2 }}
       >
-        <AnimatePresence>
-          {items.map((item, index) => (
-            <Reorder.Item
-              value={item}
-              className="list-row"
-              key={item.id}
-              layoutId={item.id}
-              variants={itemVariants}
-              initial="hidden"
-              animate="visible"
-              exit="pre"
-              custom={(index + 1) * 0.2}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 1.1 }}
-            >
-              <div>{item.text}</div>
-              <div className="icons">
-                <RiCloseCircleLine
-                  onClick={() => removeItem(item.id)}
-                  className="delete-icon"
-                />
-              </div>
-            </Reorder.Item>
-          ))}
-        </AnimatePresence>
-      </Reorder.Group>
+        {items.map((item) => (
+          <li
+            value={item}
+            className="list-row"
+            key={item.id}
+            variants={itemVariants}
+            initial="hidden"
+          >
+            <div>{item.text}</div>
+            <div className="icons">
+              <RiCloseCircleLine
+                onClick={() => removeItem(item.id)}
+                className="delete-icon"
+              />
+            </div>
+          </li>
+        ))}
+      </ul>
     </>
   );
 }

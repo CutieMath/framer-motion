@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 
 const svgVariants = {
   start: {
@@ -26,7 +25,7 @@ function Bag() {
         viewBox="0 0 24 24"
         stroke="#fff"
       >
-        <motion.path
+        <path
           stroke-linecap="round"
           stroke-linejoin="round"
           stroke-width="1"
