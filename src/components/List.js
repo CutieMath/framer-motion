@@ -1,6 +1,6 @@
 import React from "react";
 import { RiCloseCircleLine } from "react-icons/ri";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const itemVariants = {
   hidden: { opacity: 0 },
@@ -19,24 +19,27 @@ function List({ items, removeItem }) {
         className="ul-portal"
         style={{ display: "flex", flexDirection: "column", flex: 2 }}
       >
-        {items.map((item) => (
-          <motion.li
-            value={item}
-            className="list-row"
-            key={item.id}
-            variants={itemVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            <div>{item.text}</div>
-            <div className="icons">
-              <RiCloseCircleLine
-                onClick={() => removeItem(item.id)}
-                className="delete-icon"
-              />
-            </div>
-          </motion.li>
-        ))}
+        <AnimatePresence>
+          {items.map((item) => (
+            <motion.li
+              exit="hidden" // special property for animatePresence
+              value={item}
+              className="list-row"
+              key={item.id}
+              variants={itemVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              <div>{item.text}</div>
+              <div className="icons">
+                <RiCloseCircleLine
+                  onClick={() => removeItem(item.id)}
+                  className="delete-icon"
+                />
+              </div>
+            </motion.li>
+          ))}
+        </AnimatePresence>
       </ul>
     </>
   );
