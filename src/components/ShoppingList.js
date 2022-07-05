@@ -31,7 +31,11 @@ function ShoppingList() {
 
   return (
     <div>
-      <motion.h1 animate={{ scale: 1.5, y: -200 }} transition={{ duration: 3 }}>
+      <motion.h1
+        initial={{ y: -200 }}
+        animate={{ scale: 1.5, y: 1 }}
+        transition={{ duration: 1 }}
+      >
         Shopping List
       </motion.h1>
       <ListForm onSubmit={addListItem} />
