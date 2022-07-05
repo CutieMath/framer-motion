@@ -32,8 +32,8 @@ function ShoppingList() {
   return (
     <div>
       <motion.h1
-        initial={{ y: -200 }}
-        animate={{ scale: 1.5, y: 1 }}
+        initial={{ y: -200, opacity: 0 }}
+        animate={{ scale: 1.5, y: 1, opacity: 1 }}
         transition={{ duration: 1 }}
       >
         Shopping List
