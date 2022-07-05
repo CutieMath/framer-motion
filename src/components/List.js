@@ -1,12 +1,14 @@
 import React from "react";
 import { RiCloseCircleLine } from "react-icons/ri";
+import { motion } from "framer-motion";
 
 const itemVariants = {
   hidden: { opacity: 0 },
-  visible: (custom) => ({
-    opacity: 1,
-    transition: { delay: custom },
-  }),
+  visible: { opacity: 1, transition: { duration: 1 } },
+  // visible: (custom) => ({
+  //   opacity: 1,
+  //   transition: { delay: custom },
+  // }),
 };
 
 function List({ items, removeItem }) {
@@ -18,12 +20,13 @@ function List({ items, removeItem }) {
         style={{ display: "flex", flexDirection: "column", flex: 2 }}
       >
         {items.map((item) => (
-          <li
+          <motion.li
             value={item}
             className="list-row"
             key={item.id}
             variants={itemVariants}
             initial="hidden"
+            animate="visible"
           >
             <div>{item.text}</div>
             <div className="icons">
@@ -32,7 +35,7 @@ function List({ items, removeItem }) {
                 className="delete-icon"
               />
             </div>
-          </li>
+          </motion.li>
         ))}
       </ul>
     </>
