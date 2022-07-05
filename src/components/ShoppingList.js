@@ -34,7 +34,7 @@ function ShoppingList() {
       <motion.h1
         initial={{ y: -200, opacity: 0 }}
         animate={{ scale: 1.5, y: 1, opacity: 1 }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 1, ease: "linear", type: "spring" }}
       >
         Shopping List
       </motion.h1>
