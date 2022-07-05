@@ -22,6 +22,7 @@ function List({ items, removeItem }) {
         <AnimatePresence>
           {items.map((item) => (
             <motion.li
+              layoutId={item.id}
               exit="hidden" // special property for animatePresence
               value={item}
               className="list-row"
