@@ -28,6 +28,7 @@ function List({ items, removeItem }) {
               key={item.id}
               variants={itemVariants}
               custom={(index + 1) * 0.2}
+              whileHover={{ scale: 1.05 }}
               initial="hidden"
               animate="visible"
             >
