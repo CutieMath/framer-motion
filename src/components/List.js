@@ -4,11 +4,10 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const itemVariants = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 1 } },
-  // visible: (custom) => ({
-  //   opacity: 1,
-  //   transition: { delay: custom },
-  // }),
+  visible: (custom) => ({
+    opacity: 1,
+    transition: { delay: custom },
+  }),
 };
 
 function List({ items, removeItem }) {
@@ -20,14 +19,15 @@ function List({ items, removeItem }) {
         style={{ display: "flex", flexDirection: "column", flex: 2 }}
       >
         <AnimatePresence>
-          {items.map((item) => (
+          {items.map((item, index) => (
             <motion.li
-              layoutId={item.id}
+              layoutId={item.id} // make adding list item more smooth
               exit="hidden" // special property for animatePresence
               value={item}
               className="list-row"
               key={item.id}
               variants={itemVariants}
+              custom={(index + 1) * 0.2}
               initial="hidden"
               animate="visible"
             >
