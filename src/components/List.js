@@ -1,6 +1,6 @@
 import React from "react";
 import { RiCloseCircleLine } from "react-icons/ri";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Reorder } from "framer-motion";
 
 const itemVariants = {
   hidden: { opacity: 0 },
@@ -10,17 +10,19 @@ const itemVariants = {
   }),
 };
 
-function List({ items, removeItem }) {
+function List({ items, removeItem, reOrderList }) {
   return (
     <>
-      <ul
+      <Reorder.Group
+        axis="y"
         values={items}
+        onReorder={reOrderList}
         className="ul-portal"
         style={{ display: "flex", flexDirection: "column", flex: 2 }}
       >
         <AnimatePresence>
           {items.map((item, index) => (
-            <motion.li
+            <Reorder.Item
               layoutId={item.id} // make adding list item more smooth
               exit="hidden" // special property for animatePresence
               value={item}
@@ -40,10 +42,10 @@ function List({ items, removeItem }) {
                   className="delete-icon"
                 />
               </div>
-            </motion.li>
+            </Reorder.Item>
           ))}
         </AnimatePresence>
-      </ul>
+      </Reorder.Group>
     </>
   );
 }
