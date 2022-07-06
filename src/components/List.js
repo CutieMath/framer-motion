@@ -29,6 +29,7 @@ function List({ items, removeItem }) {
               variants={itemVariants}
               custom={(index + 1) * 0.2}
               whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 1.1 }}
               initial="hidden"
               animate="visible"
             >
