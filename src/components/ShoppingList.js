@@ -36,7 +36,7 @@ function ShoppingList() {
         animate={{ scale: 1.5, y: 1, opacity: 1 }}
         transition={{ duration: 1, ease: "linear", type: "spring" }}
       >
-        Shopping List
+        Testing List
       </motion.h1>
       <ListForm onSubmit={addListItem} />
       <List items={items} removeItem={removeItem} reOrderList={setItems} />
